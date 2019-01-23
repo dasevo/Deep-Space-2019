@@ -9,7 +9,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Vision;
 import frc.robot.drive.Autonomous;
@@ -181,5 +180,4 @@ public class Robot extends TimedRobot {
       autoOp = false;
     }
   }
-
 }

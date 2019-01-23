@@ -30,6 +30,7 @@ public class Ypid implements PIDOutput
         yController.setOutputRange(-0.5, 0.5);
         yController.setAbsoluteTolerance(0.3);
         yController.disable();
+        yController.setToleranceBuffer(5);
         LiveWindow.addActuator("DriveSystem", "yController", yController);
     }
 

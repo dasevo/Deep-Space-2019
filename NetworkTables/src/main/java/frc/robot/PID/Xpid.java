@@ -31,6 +31,7 @@ public class Xpid implements PIDOutput
         xController.setOutputRange(-0.5, 0.5);
         xController.setAbsoluteTolerance(0.3);
         xController.disable();
+        xController.setToleranceBuffer(5);
         LiveWindow.addActuator("DriveSystem", "xController", xController);
     }
 

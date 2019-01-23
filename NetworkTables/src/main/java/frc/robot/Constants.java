@@ -13,5 +13,6 @@ public class Constants
     public static double kPy = 0.2;
     public static double kIy = 0;
     public static double kDy = 0;
-    public static double turnLimit = 1;
+    public static double turnLimit = 2;
+    public static double posLimit = 1;
 }

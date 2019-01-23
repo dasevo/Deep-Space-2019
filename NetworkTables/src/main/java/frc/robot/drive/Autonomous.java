@@ -9,6 +9,7 @@ public class Autonomous
     private double x;
     private double y;
     private double r;
+    private boolean doneTwice = false;
 
     public boolean disable = false;
 
@@ -60,7 +61,42 @@ public class Autonomous
     {
         if(Robot.autoOp)
         {
+            autoEnd();
             RobotMap.drive.driveCartesian(-y,x,0.7*Robot.teleopDrive.turnOnAxis.pidAngleOutput.getSpeed()); //x=right -y=forward
+        }
+    }
+
+    public void autoEnd()
+    {
+        if(Robot.ypid.yController.isEnabled()&&Robot.ypid.yController.onTarget())
+        {
+            if(doneTwice)
+            {
+                Robot.ypid.yController.disable();
+                doneTwice = false;
+            }
+            else
+            {
+                Robot.ypid.yController.setSetpoint(0);
+                doneTwice = true;
+            }
+        }
+        else if(Robot.xpid.xController.isEnabled()&&Robot.xpid.xController.onTarget())
+        {
+            if(doneTwice)
+            {
+                Robot.xpid.xController.disable();
+                doneTwice = false;
+            }
+            else
+            {
+                Robot.xpid.xController.setSetpoint(0);
+                doneTwice = true;
+            }
+        }
+        else if(Robot.teleopDrive.turnOnAxis.turnAngleController.onTarget())
+        {
+            Robot.teleopDrive.turnOnAxis.turnAngleController.disable();
         }
     }
 }

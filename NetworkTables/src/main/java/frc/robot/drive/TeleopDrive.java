@@ -30,9 +30,11 @@ public class TeleopDrive
     {
         SmartDashboard.putBoolean("DPad turn", turnOnAxis.turnAngleController.isEnabled());
         SmartDashboard.putBoolean("autoTurn", turnOnAxis.autoTurn);
-        SmartDashboard.putBoolean("exitPID", Math.abs(turnOnAxis.turnAngleController.getError())<=Constants.turnLimit&&Math.abs(turnOnAxis.rotationSpeed)<=0.05);
+        SmartDashboard.putBoolean("exitPID", Robot.teleopDrive.turnOnAxis.turnAngleController.onTarget());
         SmartDashboard.putNumber("turError", turnOnAxis.turnAngleController.getError());
         SmartDashboard.putNumber("turnPID", Robot.teleopDrive.turnOnAxis.rotationSpeed);
+        SmartDashboard.putNumber("Dpad", Robot.teleopDrive.turnOnAxis._xBox.getPOV());
+        SmartDashboard.putNumber("setpoint", Robot.teleopDrive.turnOnAxis.turnAngleController.getSetpoint());
     }
 
 
